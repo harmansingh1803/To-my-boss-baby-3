@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Sargun 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Lato',sans-serif;min-height:100vh;overflow-x:hidden}
+
+    /* FLOATING HEARTS */
+    .floating-hearts{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
+    .heart{position:absolute;animation:floatHeart linear infinite;opacity:0;user-select:none}
+    @keyframes floatHeart{
+      0%{transform:translateY(110vh) rotate(-10deg);opacity:0}
+      8%{opacity:.55}
+      90%{opacity:.3}
+      100%{transform:translateY(-10vh) rotate(15deg);opacity:0}
+    }
+
+    /* PAGE 1 */
+    #page1{min-height:100vh;background:linear-gradient(145deg,#fff0f5 0%,#ffe0ec 45%,#ffd6e7 100%);display:flex;align-items:center;justify-content:center;padding:2rem 1rem;position:relative;transition:opacity .7s ease}
+    .p1-card{background:rgba(255,255,255,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:32px;padding:3rem 2.5rem 2.5rem;text-align:center;max-width:480px;width:100%;box-shadow:0 12px 56px rgba(214,51,132,.18),0 2px 8px rgba(255,150,190,.12);position:relative;z-index:2;animation:cardIn .8s cubic-bezier(.34,1.56,.64,1) both}
+    @keyframes cardIn{from{transform:scale(.85) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+    .flowers-top{font-size:2rem;margin-bottom:.8rem;animation:sway 3s ease-in-out infinite}
+    @keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+    .big-question{font-family:'Dancing Script',cursive;font-size:clamp(2.2rem,6vw,3.2rem);color:#d63384;line-height:1.2;margin-bottom:.6rem;animation:pulseTxt 2.2s ease-in-out infinite}
+    @keyframes pulseTxt{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+    .p1-subtitle{font-size:.95rem;color:#c06080;font-weight:300;margin-bottom:.5rem;letter-spacing:.3px}
+    .think-hint{font-size:.85rem;color:#e8a0c0;font-style:italic;margin-bottom:2rem}
+    .btn-row{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+    .btn-yes{padding:.8rem 2.8rem;border-radius:50px;border:none;background:linear-gradient(135deg,#ff6b9d 0%,#d63384 100%);color:white;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;box-shadow:0 4px 20px rgba(214,51,132,.38);transition:transform .2s,box-shadow .2s}
+    .btn-yes:hover{transform:scale(1.09);box-shadow:0 8px 28px rgba(214,51,132,.5)}
+    .btn-no{padding:.8rem 2.8rem;border-radius:50px;border:2px solid #f4a0c0;background:white;color:#d63384;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;transition:background .2s,transform .2s}
+    .btn-no:hover{background:#fff0f5;transform:scale(1.04)}
+    .btn-no:disabled{opacity:.28;cursor:not-allowed;transform:none}
+    .p1-footer-note{margin-top:1.5rem;font-size:.82rem;color:#dba8c4;font-style:italic}
+
+    /* POPUP */
+    .popup-overlay{display:none;position:fixed;inset:0;background:rgba(255,180,210,.48);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center}
+    .popup-overlay.show{display:flex}
+    .popup-card{background:#fff;border-radius:28px;padding:2.2rem 2rem;text-align:center;max-width:310px;width:90%;box-shadow:0 16px 56px rgba(214,51,132,.28);animation:popIn .38s cubic-bezier(.34,1.56,.64,1) both}
+    @keyframes popIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+    .cry-emoji{font-size:4.5rem;display:block;margin-bottom:.4rem;animation:cryShake .45s ease-in-out infinite alternate}
+    @keyframes cryShake{0%{transform:rotate(-9deg) scale(1)}100%{transform:rotate(9deg) scale(1.08)}}
+    .popup-title{font-family:'Dancing Script',cursive;font-size:1.7rem;color:#d63384;margin-bottom:.4rem}
+    .popup-msg{font-size:.92rem;color:#c06080;line-height:1.6;margin-bottom:1.4rem}
+    .btn-popup-yes{padding:.7rem 2.2rem;border-radius:50px;border:none;background:linear-gradient(135deg,#ff6b9d,#d63384);color:white;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;box-shadow:0 4px 16px rgba(214,51,132,.32);transition:transform .2s}
+    .btn-popup-yes:hover{transform:scale(1.08)}
+    .popup-tiny{margin-top:.7rem;font-size:.78rem;color:#e0a8c0}
+
+    /* PAGE 2 */
+    #page2{display:none;min-height:100vh;background:linear-gradient(160deg,#fff0f6 0%,#ffe4ef 50%,#fce4ec 100%);align-items:flex-start;justify-content:center;padding:3rem 1rem 4rem;position:relative;opacity:0;transition:opacity .8s ease}
+    #page2.visible{display:flex;opacity:0}
+    #page2.fade-in{opacity:1}
+    .speech-card{background:rgba(255,255,255,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:32px;padding:3rem 2.5rem 2.5rem;max-width:640px;width:100%;box-shadow:0 12px 56px rgba(214,51,132,.15),0 2px 8px rgba(255,150,190,.1);position:relative;z-index:2;animation:cardIn .9s cubic-bezier(.34,1.56,.64,1) both}
+    .speech-icon{text-align:center;font-size:2.4rem;margin-bottom:.6rem;animation:pulseTxt 2.5s ease-in-out infinite}
+    .speech-heading{font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,5vw,2.6rem);color:#d63384;text-align:center;margin-bottom:.5rem}
+    .divider{text-align:center;color:#f4a0c0;letter-spacing:8px;font-size:1.1rem;margin-bottom:2rem}
+    .speech-body{font-size:.97rem;line-height:2;color:#4a1830;white-space:pre-line}
+    .speech-body .hl{color:#d63384;font-weight:700;font-size:1.05rem}
+    .sparkle-line{text-align:center;font-size:1.1rem;letter-spacing:5px;color:#f4a0c0;margin:1.6rem 0}
+    .speech-sign{text-align:right;font-family:'Dancing Script',cursive;font-size:1.5rem;color:#d63384;line-height:1.7;margin-top:.5rem}
+
+    /* PAGE 2 CTA SECTION */
+    .apology-cta{margin-top:2.5rem;padding-top:2rem;border-top:1px dashed #f4a0c0;text-align:center}
+    .apology-cta-label{font-family:'Dancing Script',cursive;font-size:1.5rem;color:#d63384;margin-bottom:.4rem}
+    .apology-cta-hint{font-size:.85rem;color:#c06080;margin-bottom:1.4rem;font-style:italic}
+    .apology-btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-forgive{padding:.8rem 2rem;border-radius:50px;border:none;background:linear-gradient(135deg,#ff6b9d,#d63384);color:white;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;box-shadow:0 4px 18px rgba(214,51,132,.35);transition:transform .2s,box-shadow .2s}
+    .btn-forgive:hover{transform:scale(1.09);box-shadow:0 8px 28px rgba(214,51,132,.5)}
+    .btn-deny{padding:.8rem 2rem;border-radius:50px;border:2px solid #f4a0c0;background:white;color:#d63384;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;transition:all .2s;position:relative}
+    .btn-deny:hover{background:#fff0f5}
+
+    /* DENY POPUP */
+    .deny-overlay{display:none;position:fixed;inset:0;background:rgba(255,180,210,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:300;align-items:center;justify-content:center}
+    .deny-overlay.show{display:flex}
+    .deny-card{background:#fff;border-radius:28px;padding:2.5rem 2rem;text-align:center;max-width:340px;width:92%;box-shadow:0 16px 56px rgba(214,51,132,.3);animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both}
+    .deny-emoji-row{font-size:3rem;margin-bottom:.6rem;animation:wobble 1s ease-in-out infinite}
+    @keyframes wobble{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+    .deny-title{font-family:'Dancing Script',cursive;font-size:1.8rem;color:#d63384;margin-bottom:.5rem}
+    .deny-msg{font-size:.93rem;color:#9b3060;line-height:1.7;margin-bottom:.8rem}
+    .deny-quote{background:linear-gradient(135deg,#fff0f5,#ffe4ef);border-left:3px solid #d63384;border-radius:0 12px 12px 0;padding:.8rem 1rem;margin:.8rem 0 1.2rem;font-style:italic;font-size:.88rem;color:#c06080;line-height:1.6}
+    .btn-deny-ok{padding:.7rem 2.2rem;border-radius:50px;border:none;background:linear-gradient(135deg,#ff6b9d,#d63384);color:white;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;box-shadow:0 4px 16px rgba(214,51,132,.32);transition:transform .2s}
+    .btn-deny-ok:hover{transform:scale(1.08)}
+
+    /* PAGE 3 */
+    #page3{display:none;min-height:100vh;background:linear-gradient(170deg,#fdf0f6 0%,#fde8f0 40%,#fce0ea 70%,#fcd6e5 100%);align-items:flex-start;justify-content:center;padding:3rem 1rem 5rem;position:relative;opacity:0;transition:opacity .8s ease}
+    #page3.visible{display:flex;opacity:0}
+    #page3.fade-in{opacity:1}
+    .p3-wrap{max-width:660px;width:100%;position:relative;z-index:2;display:flex;flex-direction:column;gap:2rem}
+
+    /* POEM CARD SHARED */
+    .poem-card{background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:28px;padding:2.5rem 2rem;box-shadow:0 10px 48px rgba(214,51,132,.15),0 2px 8px rgba(255,150,190,.1);animation:cardIn .9s cubic-bezier(.34,1.56,.64,1) both}
+    .poem-badge{display:inline-block;background:linear-gradient(135deg,#ff6b9d,#d63384);color:white;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:.8rem}
+    .poem-title{font-family:'Dancing Script',cursive;font-size:clamp(1.6rem,4.5vw,2.2rem);color:#d63384;margin-bottom:.3rem}
+    .poem-divider{color:#f4a0c0;letter-spacing:6px;font-size:1rem;margin-bottom:1.4rem}
+    .poem-text{font-size:.95rem;line-height:2.1;color:#4a1830;white-space:pre-line}
+    .poem-text .hl{color:#d63384;font-weight:700}
+    .poem-sign{text-align:right;font-family:'Dancing Script',cursive;font-size:1.3rem;color:#d63384;margin-top:1.2rem}
+    .poem-sparkle{text-align:center;font-size:1rem;letter-spacing:4px;color:#f4a0c0;margin:1rem 0 .5rem}
+
+    /* CALLIGRAPHY FORGIVE SECTION */
+    .forgive-section{background:linear-gradient(135deg,rgba(255,107,157,.12),rgba(214,51,132,.08));border:1.5px solid rgba(214,51,132,.2);border-radius:28px;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+    .forgive-section::before{content:'✨';position:absolute;top:16px;left:20px;font-size:1.6rem;opacity:.4}
+    .forgive-section::after{content:'✨';position:absolute;top:16px;right:20px;font-size:1.6rem;opacity:.4}
+    .forgive-emoji{font-size:3rem;display:block;margin-bottom:.8rem;animation:pulseTxt 2s ease-in-out infinite}
+    .forgive-calligraphy{font-family:'Great Vibes',cursive;font-size:clamp(2.2rem,7vw,3.6rem);color:#d63384;line-height:1.4;margin-bottom:.6rem;text-shadow:0 2px 16px rgba(214,51,132,.2)}
+    .forgive-sub{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,3.5vw,1.6rem);color:#b02c70;margin-bottom:1.2rem}
+    .forgive-body{font-size:.92rem;color:#7a3050;line-height:1.9;max-width:480px;margin:0 auto 1.4rem}
+    .forgive-body strong{color:#d63384}
+    .forgive-flowers{font-size:1.8rem;letter-spacing:8px;margin-top:.5rem;opacity:.7}
+
+    /* RESPONSIVE */
+    @media(max-width:480px){
+      .p1-card,.speech-card,.poem-card,.forgive-section{padding:1.8rem 1.2rem;border-radius:20px}
+      .btn-yes,.btn-no,.btn-forgive,.btn-deny{padding:.7rem 1.6rem;font-size:.95rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating hearts -->
+<div class="floating-hearts" id="floatingHearts"></div>
+
+<!-- ===== PAGE 1 ===== -->
+<div id="page1">
+  <div class="p1-card">
+    <div class="flowers-top">🌸💕🌸</div>
+    <div class="big-question">u my gugugaga? 🥺</div>
+    <div class="p1-subtitle">a very important question needs a very honest answer...</div>
+    <div class="think-hint">(think carefully before you answer 👇)</div>
+    <div class="btn-row">
+      <button class="btn-yes" onclick="goToPage2()">Yes 💖</button>
+      <button class="btn-no" id="noBtn" onclick="showPopup()">No 😶</button>
+    </div>
+    <div class="p1-footer-note">psst... the yes button leads somewhere very special 🌷</div>
+  </div>
+</div>
+
+<!-- PAGE 1 POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-card">
+    <span class="cry-emoji">😭</span>
+    <div class="popup-title">noooo please!!</div>
+    <div class="popup-msg">you literally cannot say no to me, baby 🥺<br/>my heart is shattering into a million tiny pieces<br/>right now... please reconsider 💔</div>
+    <button class="btn-popup-yes" onclick="closeAndYes()">okay fine... yes 💕</button>
+    <div class="popup-tiny">(there was never really a "no" option, sorry 😅)</div>
+  </div>
+</div>
+
+<!-- ===== PAGE 2 ===== -->
+<div id="page2">
+  <div class="speech-card">
+    <div class="speech-icon">💌</div>
+    <div class="speech-heading">My dearest Sargun,</div>
+    <div class="divider">❤️ · · ❤️ · · ❤️</div>
+    <div class="speech-body">Come here for a second, my baby. I know you're missing me a lot, and trust me, I feel exactly the same. Every day without you feels a little incomplete. There are moments when I wish I could just leave everything, come to you, hold your hand, hug you tightly, and tell you that everything is going to be okay.
+
+<span class="hl">But listen to me carefully, my love...</span>
+
+We're so close now. Just a few more days. We've already crossed the hardest part of this distance, and now we're standing so close to meeting each other again. Don't let these last few days make you doubt the beautiful future that's waiting for us.
+
+Do you remember all those dreams we've built together? Every little manifestation, every late-night conversation about our future, every promise we made to each other... none of those were just words. They became my reason to keep moving forward. And do you know who made all of that possible?
+
+<span class="hl">You.</span>
+
+You are the reason I smile every day. You are the reason I believe in love. You are the reason I dream about a beautiful future. Before you, I never imagined someone could become such an important part of my life. But today, I honestly cannot imagine my life without you.
+
+So when you talk about leaving or giving up because this distance hurts, it breaks my heart. How can we not stay together, my baby? After everything we've dreamed about? After every promise we've made? After everything we've survived together?
+
+<span class="hl">No, my love.</span>
+
+I don't want a life where you're not beside me. I don't want a future that doesn't have you in it. I just need you. Today, tomorrow, and always.
+
+Every single day, I pray for you. I pray that you stay happy, healthy, successful, and protected from every sadness. Whenever I fold my hands in prayer, you're always there in my heart. Your happiness has become a part of my prayers because your smile means everything to me.
+
+And if I have ever hurt you, even unknowingly, I'm truly sorry. I never want to be the reason behind your tears. If I've made mistakes, I promise I'll keep learning and becoming a better man for you every single day.
+
+<span class="hl">Long-distance isn't easy. I know that.</span> Some days it feels unfair. Some nights it feels endless. But you know what makes it beautiful?
+
+<span class="hl">Patience.</span>
+
+Because patience is proof that our love is stronger than our circumstances. Every day apart is one day closer to never having to say goodbye again.
+
+<span class="hl">And I choose you.</span>
+
+Again and again. Every morning. Every night. Every heartbeat. Every lifetime.
+
+Until then... Take care of yourself for me. 🌷
+
+Please don't lose hope. We're almost there.</div>
+
+    <div class="sparkle-line">✨ 💖 ✨ 💖 ✨</div>
+    <div class="speech-sign">I love you so, so, so much, Sargun.<br/>— Always yours, Harman ❤️</div>
+
+    <!-- APOLOGY CTA -->
+    <div class="apology-cta">
+      <div class="apology-cta-label">💗 One more thing, my Saggu...</div>
+      <div class="apology-cta-hint">I know I've hurt you sometimes. Will you accept my apology, baby? 🥺</div>
+      <div class="apology-btn-row">
+        <button class="btn-forgive" onclick="goToPage3()">I accept your apology 🌸</button>
+        <button class="btn-deny" id="denyBtn" onclick="showDenyPopup()">Not yet... 💔</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DENY POPUP -->
+<div class="deny-overlay" id="denyOverlay">
+  <div class="deny-card">
+    <div class="deny-emoji-row">🥺💔😭</div>
+    <div class="deny-title">Baby, noooo...</div>
+    <div class="deny-msg">Okay wait. Before you press that again, just listen to me for one second...</div>
+    <div class="deny-quote">"The bravest thing two people can do is choose each other even after they've seen each other's worst. That's not weakness — that's love." 💖</div>
+    <div class="deny-msg" style="font-size:.88rem">I'm not asking you to forget. I'm asking you to give us a chance to write a better chapter. You deserve to feel loved, and I deserve the chance to show you how much I've grown. Please, Saggu... 🌷</div>
+    <button class="btn-deny-ok" onclick="closeDenyAndProceed()">Okay fine... I'll give you a chance 💕</button>
+    <div class="popup-tiny" style="margin-top:.8rem">(I was never going to let you click "no" anyway 😅)</div>
+  </div>
+</div>
+
+<!-- ===== PAGE 3 ===== -->
+<div id="page3">
+  <div class="p3-wrap">
+
+    <!-- POEM 1 — FUNNY PUNJABI -->
+    <div class="poem-card">
+      <div class="poem-badge">💛 Poem 01 — Dil Di Shayri</div>
+      <div class="poem-title">Suno Meri Saggu... ❤️</div>
+      <div class="poem-divider">🌸 · · 🌸 · · 🌸</div>
+      <div class="poem-text">Tusi meri morning chai bhi ho,
+te midnight Maggi bhi,
+Kadii Netflix di "Skip Intro",
+te kade meri favourite melody bhi.
+
+Tusi Google bhi ho, kyunki
+har sawaal da jawaab tusi hi ho,
+Wi-Fi bhi tu hi ae mera —
+kyunki dil sirf connect hunda hi thode naal ae. ❤️
+
+Thodde bina din aive hi lagda hai
+jivein phone bina battery de,
+Ya golgappe bina paani de...
+ya momos bina chutney de.
+
+Kade meri Spotify playlist,
+kade meri Instagram reel,
+Thode bina sab kuch adhoora lagda ae —
+<span class="hl">Its like... "Loading..." but never real.</span>
+
+Chand nal compare karna tan bahut purana ho gaya,
+Sach aakhan —
+Chand sikhh ke thodde ton gya ae glow krna,
+te jive thode chehre te hun glow aagya
+meri aa website te shayri padhke. ❤️
+
+Bas ek complaint hai, madam ji...
+Dil di booking puuri jindgi layi krli
+<span class="hl">te receipt bhi nahi ditti. 😤❤️</span>
+
+Waiting for the booking receipt...
+<span class="hl">(....The wedding certificate...) 😉</span>
+
+Hehehehehehehhehe.
+
+Gugugugagag ❤️
+
+To sun lo, Miss Sargun...
+Lifetime ka contract sign ho chuka hai,
+<span class="hl">Return, Exchange aur Refund...
+tino permanently band hain. 🤭</span></div>
+      <div class="poem-sparkle">💕 · · 💕 · · 💕</div>
+      <div class="poem-sign">— Tera hi Harman 😄❤️</div>
+    </div>
+
+    <!-- POEM 2 — EMOTIONAL ENGLISH -->
+    <div class="poem-card">
+      <div class="poem-badge">❤️ Poem 02 — From the Heart</div>
+      <div class="poem-title">For My Saggu ❤️</div>
+      <div class="poem-divider">💖 · · 💖 · · 💖</div>
+      <div class="poem-text">Distance may keep our hands apart,
+But it has never touched our hearts.
+
+Every sunrise reminds me of you,
+Every sunset whispers your name too.
+
+People say love becomes weaker with time,
+But every day, you become a more beautiful reason for mine.
+
+<span class="hl">If waiting is the price of forever,
+Then I'd choose to wait, over and over.</span>
+
+You're not just someone I love,
+You're the peace I pray for, the home I dream of.
+
+When life gets hard and your heart feels tired,
+Remember this — you are deeply loved, deeply admired.
+
+I don't promise a perfect story,
+But I promise a love that will never leave your side.
+
+No matter how many miles stand between us,
+<span class="hl">There isn't a single day when I don't choose us.</span>
+
+One day, this distance will become just another memory,
+And we'll smile, knowing it was all worth it.
+
+Until then...
+
+Keep my place in your heart,
+Just as I'll keep yours in mine.
+
+Because every beat of my heart says the same thing —
+
+<span class="hl">I loved you yesterday.
+I love you today.
+And I'll love you even more tomorrow.</span></div>
+      <div class="poem-sparkle">✨ 💖 ✨ 💖 ✨</div>
+      <div class="poem-sign">Forever yours,<br/>Harman ❤️</div>
+    </div>
+
+    <!-- CALLIGRAPHY FORGIVE SECTION -->
+    <div class="forgive-section">
+      <span class="forgive-emoji">🙏🌷</span>
+      <div class="forgive-calligraphy">Please Forgive Me,<br/>My Saggu</div>
+      <div class="forgive-sub">And always, always believe in yourself ✨</div>
+      <div class="forgive-body">
+        I know I've made mistakes. I know there were moments I fell short of the love you deserved. And I carry that. But I also know this — every single day, I am trying. Trying to be better. Trying to love you the way you deserve to be loved.
+        <br/><br/>
+        <strong>You are stronger than every hard day you've ever had.</strong> You've survived 100% of your worst moments. You are not a burden — you are a blessing. You are not too much — you are exactly enough.
+        <br/><br/>
+        <strong>Believe in yourself</strong> the way I believe in you. Because that girl — the one reading this right now — she is extraordinary. She is capable of anything. And she is deeply, completely, endlessly loved.
+        <br/><br/>
+        <strong>Forgive me. And never stop forgiving yourself too. 🌷</strong>
+      </div>
+      <div class="forgive-flowers">🌸 💕 🌸 💕 🌸</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* Floating hearts */
+  (function(){
+    const c=document.getElementById('floatingHearts');
+    const items=['💕','💗','💖','💓','🌸','💝','🌷','💞','✨','🩷','🫶'];
+    for(let i=0;i<22;i++){
+      const el=document.createElement('span');
+      el.className='heart';
+      el.textContent=items[Math.floor(Math.random()*items.length)];
+      el.style.left=Math.random()*100+'%';
+      el.style.fontSize=(13+Math.random()*16)+'px';
+      const dur=7+Math.random()*9;
+      el.style.animationDuration=dur+'s';
+      el.style.animationDelay=(Math.random()*dur)+'s';
+      c.appendChild(el);
+    }
+  })();
+
+  let noClicks=0;
+  function showPopup(){
+    noClicks++;
+    document.getElementById('popupOverlay').classList.add('show');
+    if(noClicks>=2){
+      const btn=document.getElementById('noBtn');
+      btn.disabled=true;
+      btn.textContent='No (gone forever 🚫)';
+    }
+  }
+  function closeAndYes(){
+    document.getElementById('popupOverlay').classList.remove('show');
+    setTimeout(goToPage2,300);
+  }
+
+  let denyClicks=0;
+  function showDenyPopup(){
+    denyClicks++;
+    document.getElementById('denyOverlay').classList.add('show');
+    if(denyClicks>=2){
+      const btn=document.getElementById('denyBtn');
+      btn.disabled=true;
+      btn.textContent='Nope, gone 🚫';
+      btn.style.opacity='.3';
+      btn.style.cursor='not-allowed';
+    }
+  }
+  function closeDenyAndProceed(){
+    document.getElementById('denyOverlay').classList.remove('show');
+    setTimeout(goToPage3,300);
+  }
+
+  function goToPage2(){
+    const p1=document.getElementById('page1');
+    const p2=document.getElementById('page2');
+    p1.style.opacity='0';
+    p1.style.transition='opacity .6s ease';
+    setTimeout(()=>{
+      p1.style.display='none';
+      p2.classList.add('visible');
+      void p2.offsetWidth;
+      p2.classList.add('fade-in');
+      window.scrollTo(0,0);
+    },650);
+  }
+
+  function goToPage3(){
+    const p2=document.getElementById('page2');
+    const p3=document.getElementById('page3');
+    p2.style.opacity='0';
+    p2.style.transition='opacity .6s ease';
+    setTimeout(()=>{
+      p2.style.display='none';
+      p3.classList.add('visible');
+      void p3.offsetWidth;
+      p3.classList.add('fade-in');
+      window.scrollTo(0,0);
+    },650);
+  }
+</script>
+</body>
+</html>
